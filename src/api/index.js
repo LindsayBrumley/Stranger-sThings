@@ -127,20 +127,19 @@ export const deletePost = async (id, token) => {
 };
 
 export const editPost = async (
+  id,
+  token,
   title,
   description,
   price,
   location,
-  willDeliver,
-  token,
-  id
+  willDeliver
 ) => {
   console.log(id);
   try {
     const response = await fetch(`${baseUrl}/posts/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application.json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
@@ -154,10 +153,16 @@ export const editPost = async (
         },
       }),
     });
+    if (!response.ok) {
+      // Check if the response status is not OK (e.g., 401 Unauthorized)
+      console.error("API Error:", response.status, response.statusText);
+      return { success: false, error: response.statusText, data: null };
+    }
     const result = await response.json();
+    console.log("API Response", result);
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Error updating post:", error);
   }
 };
 

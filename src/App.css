@@ -6,16 +6,20 @@
 }
 
 #main-header {
-  background-color: darkgray;
+  background-color: #a3c3f7;
   border: 2px solid black;
+  border-radius: 4px;
   min-width: 900px;
 }
-
+.title {
+  font-family: "Lilita One", cursive;
+}
 .single-post-card {
-  background-color: lightgray;
+  background-color: #a3c3f7;
   padding: 1.5rem;
   margin: 20px;
   border: 2px solid black;
+  border-radius: 4px;
 }
 
 a {
@@ -40,7 +44,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #f9f9f9;
+  color: white;
+  background-color: #135dbd;
   cursor: pointer;
   transition: border-color 0.25s;
   margin: 5px;
@@ -54,9 +59,10 @@ button:focus-visible {
 }
 
 a:hover {
-    color: #747bff;
-  }
+  color: #747bff;
+}
 
-  .my-messages, .recieved-messages {
-    margin: 40px;
-  }
+.my-messages,
+.recieved-messages {
+  margin: 40px;
+}

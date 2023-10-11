@@ -35,7 +35,14 @@ const PostsDiv = () => {
         />
       </div>
       {postsToDisplay.map((post) => {
-        return <SinglePostCard key={post._id} post={post} token={token} />;
+        return (
+          <SinglePostCard
+            key={post._id}
+            post={post}
+            token={token}
+            setPosts={setPosts}
+          />
+        );
       })}
     </div>
   );

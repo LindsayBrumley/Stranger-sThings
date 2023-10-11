@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import PostsDiv from "./posts";
 import SignInForm from "./Components/SignInForm";
+import SinglePostCard from "./Components/SinglePostCard";
+import EditPostForm from "./Components/EditPostForm";
 import useAuth from "./useAuth";
 import "./App.css";
 import UserProfile from "./Components/UserProfile";
@@ -14,13 +16,14 @@ function App() {
   return (
     <div className="App">
       <header id="main-header">
-        <h1>Stranger's Things</h1>
+        <h1 className="title">Stranger's Things</h1>
         {token ? <p>Welcome, {user.username}</p> : null}
         <nav>
           <Link to="/">Posts</Link>
           {!token ? <Link to="/sign-up">Sign Up</Link> : null}
           {token ? <Link to="/my-account"> My Account</Link> : null}
           {!token ? <Link to="/login">Login</Link> : null}
+
           {token ? (
             <button
               onClick={() => {
@@ -39,6 +42,7 @@ function App() {
           <Route path="/" element={<PostsDiv />} />
           <Route path="/sign-up" element={<SignInForm />} />
           <Route path="/login" element={<SignInForm />} />
+          <Route path="/edit-post/:postId" element={<EditPostForm />} />
           <Route path="/my-account" element={<MyProfile />} />
         </Routes>
       </div>
